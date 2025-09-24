@@ -1,0 +1,33 @@
+{
+    "manifest_version": 2,
+    "name": "AISummaryDisplay",
+    "version": "1.0.1",
+    "author": "南鸢晨星huangyx 喵~",
+    "authorUrl": "https://nycx.top/",
+    "description":"在修订列表中显示AI生成的摘要",
+    "Hooks": {
+        "PageHistoryLineEnding": "AISummaryHooks::onPageHistoryLineEnding",
+        "EnhancedChangesListModifyLineData": "AISummaryHooks::onEnhancedChangesListModifyLineData",
+        "OldChangesListRecentChangesLine": "AISummaryHooks::onOldChangesListRecentChangesLine",
+        "ContributionsLineEnding": "AISummaryHooks::onContributionsLineEnding"
+    },
+    "AutoloadClasses": {
+        "AISummaryHooks": "RevisionAISummary.hooks.php",
+        "AISummaryUtil": "AISummaryUtil.php",
+        "ApiAISummary": "ApiAISummary.php"
+    },
+    "attributes": {
+        "DatabaseTables": {
+            "ai_summary": "sql/ai_summary.sql"
+        }
+    },
+    "APIModules": {
+        "aisummary": "ApiAISummary"
+    },
+    "config": {
+        "AISummaryToken": {
+            "value": "",
+            "description": "API token for AI summary submission"
+        }
+    }
+}
