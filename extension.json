@@ -10,7 +10,8 @@
         "PageHistoryLineEnding": "AISummaryHooks::onPageHistoryLineEnding",
         "EnhancedChangesListModifyLineData": "AISummaryHooks::onEnhancedChangesListModifyLineData",
         "OldChangesListRecentChangesLine": "AISummaryHooks::onOldChangesListRecentChangesLine",
-        "ContributionsLineEnding": "AISummaryHooks::onContributionsLineEnding"
+        "ContributionsLineEnding": "AISummaryHooks::onContributionsLineEnding",
+        "EnhancedChangesListModifyBlockLineData": "AISummaryHooks::onEnhancedChangesListModifyBlockLineData"
     },
     "AutoloadClasses": {
         "AISummaryHooks": "RevisionAISummary.hooks.php",

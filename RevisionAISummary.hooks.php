@@ -80,7 +80,7 @@ class AISummaryHooks {
     }
 
     /**
-     * 最近更改页面 Special:RecentChanges EnhancedChangesListModifyLineData
+     * 最近更改页面（堆叠模式 展开的行） Special:RecentChanges EnhancedChangesListModifyLineData
      */
     public static function onEnhancedChangesListModifyLineData($changesList, &$data, $block, $rc, &$classes, &$attribs) {
         try {
@@ -89,13 +89,31 @@ class AISummaryHooks {
 
             // 判断是否存在文本
             if ($aiText) {
-                $data['ai_summary_debug'] = self::generateAISummaryHTML($aiText);
+                $data['ai_summary'] = self::generateAISummaryHTML($aiText);
             }
         } catch (\Throwable $e) {
             self::logError($e, 'onEnhancedChangesListModifyLineData');
         }
     }
 
+    /**
+     * 最近更改页面（堆叠模式 未堆叠行） Special:RecentChanges EnhancedChangesListModifyBlockLineData
+     */
+    public static function onEnhancedChangesListModifyBlockLineData($changesList, &$data, $rc) {
+        try {
+
+            // 未堆叠行的头部 修订ID ，毕竟都未堆叠了，只有会有一个
+            $revid = $rc->getAttribute('rc_this_oldid');
+            $aiText = AISummaryUtil::makeAISummaryText($revid);
+
+            // 判断是否存在文本
+            if ($aiText) {
+                $data['ai_summary'] = self::generateAISummaryHTML($aiText);
+            }
+        } catch (\Throwable $e) {
+            self::logError($e, 'onEnhancedChangesListModifyBlockLineData');
+        }
+    }
     /**
      * 最近更改页面 Special:RecentChanges OldChangesListRecentChangesLine
      */
