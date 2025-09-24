@@ -30,8 +30,8 @@
 }
 
 /* 提示显示 */
-.mw-ai-summary::after {
-    content: "此摘要为 AI 生成";
+.mw-ai-summary::after {{
+    content: "此摘要为 AI 生成" "  (revid: " attr(data-revid) ")"; /* 显示修订ID，方便调试和定位 */
     position: absolute;
     left: 0;
     top: 100%;                   /* 紧跟在元素下方 */

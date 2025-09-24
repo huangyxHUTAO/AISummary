@@ -42,10 +42,14 @@ class AISummaryHooks {
      * @param string $aiText AI摘要文本
      * @return string HTML字符串
      */
-    private static function generateAISummaryHTML($aiText) {
+    private static function generateAISummaryHTML($aiText, $revid = null) {
+        $attrs = [ 'class' => 'mw-ai-summary' ];
+        if ($revid !== null) {
+            $attrs['data-revid'] = $revid;
+        }
         return \MediaWiki\Html\Html::rawElement(
             'span',
-            [ 'class' => 'mw-ai-summary' ],
+            $attrs,
             htmlspecialchars((string)$aiText)
         );
     }
@@ -72,7 +76,7 @@ class AISummaryHooks {
 
             // 判断是否存在文本
             if ($aiText) {
-                $s .= self::generateAISummaryHTML($aiText);
+                $s .= self::generateAISummaryHTML($aiText, $revid);
             }
         } catch (\Throwable $e) {
             self::logError($e, 'onPageHistoryLineEnding');
@@ -89,7 +93,7 @@ class AISummaryHooks {
 
             // 判断是否存在文本
             if ($aiText) {
-                $data['ai_summary'] = self::generateAISummaryHTML($aiText);
+                $data['ai_summary'] = self::generateAISummaryHTML($aiText, $revid);
             }
         } catch (\Throwable $e) {
             self::logError($e, 'onEnhancedChangesListModifyLineData');
@@ -108,7 +112,7 @@ class AISummaryHooks {
 
             // 判断是否存在文本
             if ($aiText) {
-                $data['ai_summary'] = self::generateAISummaryHTML($aiText);
+                $data['ai_summary'] = self::generateAISummaryHTML($aiText, $revid);
             }
         } catch (\Throwable $e) {
             self::logError($e, 'onEnhancedChangesListModifyBlockLineData');
@@ -124,7 +128,7 @@ class AISummaryHooks {
 
             // 判断是否存在文本
             if ($aiText) {
-                $html = self::generateAISummaryHTML($aiText);
+                $html = self::generateAISummaryHTML($aiText, $revid);
                 $s = rtrim($s);
                 if (substr($s, -5) === '</li>') {
                     $s = substr($s, 0, -5) . $html . '</li>';
@@ -148,7 +152,7 @@ class AISummaryHooks {
 
             // 判断是否存在文本
             if ($aiText) {
-                $html = self::generateAISummaryHTML($aiText);
+                $html = self::generateAISummaryHTML($aiText, $revid);
                 $s = rtrim($s);
                 if (substr($s, -5) === '</li>') {
                     $s = substr($s, 0, -5) . $html . '</li>';
