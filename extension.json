@@ -1,9 +1,10 @@
 {
     "manifest_version": 2,
     "name": "AISummaryDisplay",
-    "version": "1.0.1",
-    "author": "南鸢晨星huangyx 喵~",
+    "version": "1.0.2",
+    "author": "南鸢晨星",
     "authorUrl": "https://nycx.top/",
+    "url":"https://github.com/huangyxHUTAO/AISummary",
     "description":"在修订列表中显示AI生成的摘要",
     "license-name": "Unlicense",
     "Hooks": {
