@@ -5,6 +5,7 @@
     "author": "南鸢晨星huangyx 喵~",
     "authorUrl": "https://nycx.top/",
     "description":"在修订列表中显示AI生成的摘要",
+    "license-name": "Unlicense",
     "Hooks": {
         "PageHistoryLineEnding": "AISummaryHooks::onPageHistoryLineEnding",
         "EnhancedChangesListModifyLineData": "AISummaryHooks::onEnhancedChangesListModifyLineData",
