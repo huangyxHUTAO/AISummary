@@ -46,6 +46,8 @@ class AISummaryHooks {
         $attrs = [ 'class' => 'mw-ai-summary' ];
         if ($revid !== null) {
             $attrs['data-revid'] = $revid;
+        }else{
+            $attrs['data-revid'] = '未知'; // 理论上不会出现这种情况
         }
         return \MediaWiki\Html\Html::rawElement(
             'span',
