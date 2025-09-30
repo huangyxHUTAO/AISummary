@@ -5,7 +5,6 @@
 这是一个简单的 CSS 示例，可以直接复制到 MediaWiki 的 `MediaWiki:Common.css` 页面中使用
 ```css
 /* AI摘要显示 */
-
 .mw-ai-summary {
     display: inline-block;
     margin: 2px 4px;
@@ -34,14 +33,14 @@
     content: "此摘要为 AI 生成 (revid: " attr(data-revid) ")"; /* 显示修订ID，方便调试和定位 */
     position: absolute;
     left: 0;
-    top: 100%;                   /* 紧跟在元素下方 */
-    margin-top: 4px;
+    bottom: 100%;                   /* 紧跟在元素上方 */
+    margin-bottom: 4px;
     white-space: nowrap;         /* 不换行 */
     padding: 4px 8px;
     font-size: 0.8em;
     color: #ffffffff;
-    box-shadow: 0 1px 1.5px rgba(0,0,0,.14);
-    background: #4473c460;
+    box-shadow: 0 1px 1.5px rgba(0,0,0,.20);
+    background: #4473c470;
     border-radius: 4px;
     opacity: 0;
     pointer-events: none;
