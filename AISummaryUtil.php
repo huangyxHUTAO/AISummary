@@ -9,14 +9,14 @@ class AISummaryUtil {
      */
     public static function makeAISummaryText($revid) {
         // 缓存实例
-        $cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-        $cacheKey = $cache->makeKey('aisummary', 'revid', $revid);
+        // $cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+        // $cacheKey = $cache->makeKey('aisummary', 'revid', $revid);
 
         // 从缓存中获取数据
-        $cachedText = $cache->get($cacheKey);
-        if ($cachedText !== false) {
-            return $cachedText;
-        }
+        // $cachedText = $cache->get($cacheKey);
+        // if ($cachedText !== false) {
+        //     return $cachedText;
+        // }
 
         // 数据库连接
         $db = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection(DB_PRIMARY);
@@ -33,9 +33,9 @@ class AISummaryUtil {
         }
 
         // 将结果存入缓存，如果空则可能还未生成，暂不写入（我感觉这个时间应该差不多了）
-        if ($aiText) {
-            $cache->set($cacheKey, $aiText, 3600);
-        }
+        // if ($aiText) {
+        //     $cache->set($cacheKey, $aiText, 3600);
+        // }
 
         return $aiText;
     }
